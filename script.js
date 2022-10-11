@@ -29,7 +29,7 @@ var interval = setInterval(function() {
   function taskBlock() {
 
     console.log("Current Hour " + hour);
-    var task = JSON.parse(localStorage.getItem("09:00 am"));
+    var task9 = JSON.parse(localStorage.getItem("09:00 am"));
     nineAm.val(task9);
   
     var task10 = JSON.parse(localStorage.getItem("10:00 am"))
@@ -62,7 +62,7 @@ var interval = setInterval(function() {
     var task7 = JSON.parse(localStorage.getItem("07:00 pm"))
     sevenPm.val(task7);
   }  
-   
+
 //color of background
   function background () {
       
@@ -81,3 +81,22 @@ var interval = setInterval(function() {
         }
     });
   }
+
+  $(document).ready(function(){
+    taskBlock()
+    background()
+
+// Buttons (save to Local Storage)
+    $(".saveBtn").on("click", function(){
+        userInput = $(this).siblings(".form-control").val().trim();
+        console.log(userInput);
+        hourSpan = $(this).siblings(".input-group-prepend").text().trim();
+        console.log(hourSpan);
+        localStorage.setItem(hourSpan, JSON.stringify(userInput));
+    })
+  // Button for clear the day
+    $("#clearDay").on("click", function(){
+        localStorage.clear();
+        taskBlock()
+    }) 
+});
