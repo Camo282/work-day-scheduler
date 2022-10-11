@@ -20,3 +20,4 @@ THEN the saved events persist
 
 ![](assets/workdayplanner.jpg)
 
+https://camo282.github.io/work-day-scheduler/
